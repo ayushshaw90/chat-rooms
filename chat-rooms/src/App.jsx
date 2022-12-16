@@ -63,12 +63,14 @@ function App() {
       socket.on('new-user', (name) => {
         console.log("new user", name)
         console.log(memberlist)
-        setmemberlist([...memberlist, { name: name, id: memberlist.length }])
       })
       socket.on('left', (name) => {
         console.log("left", name)
-        let i = 0;
-        setmemberlist((memberlist.filter(e => e.name != name)).map(item => { return ({ name: item.name, id: i++ }) }));
+      })
+      socket.on('user-list', (list)=>{
+        console.log('list received', list);
+        let i=0;
+        setmemberlist(list.map(e=>{return {name: e, id: i++}}))
       })
     }
   }, [memberlist])
