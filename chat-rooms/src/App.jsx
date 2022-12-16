@@ -111,7 +111,7 @@ function App() {
   return (
     <div className="App h-screen w-full">
       <div ref={joinref}>
-        <JoinRoom joinroom={joinfunc} user={user}></JoinRoom>
+        <JoinRoom joinroom={joinfunc} room={Room} user={user}></JoinRoom>
       </div>
       <div className='flex'>
         <Members memberlist={memberlist} height={height - joinheight} you={user}></Members>

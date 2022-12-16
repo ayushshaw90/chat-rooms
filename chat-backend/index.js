@@ -1,27 +1,13 @@
 const http = require('http').createServer();
-// const {instrument} = require("@socket.io/admin-ui");
 
 const io= require("socket.io")(http, {
     cors: {
         origin: ["http://localhost:5173"]
     }
 })
-/*
-instrument(io, {
-	namespace: "/admin",
-	auth : {
-		type: "basic",
-		username: "admin",
-		password: "testing"
-	},
-	mode: "development",
-});
-*/
-// let rooms={}
 let users = {};
 io.on('connection',(socket)=>{
     console.log("new connection")
-    // console.log(socket)
     socket.on('set-name', (name)=>{
         socket.data.username = name;
         console.log(socket.data.username)
@@ -44,13 +30,6 @@ io.on('connection',(socket)=>{
         })
         io.to(socket.id).emit('user-list', userlist);
         socket.in(room).emit('user-list', userlist);
-        // socket.to(room).emit()
-        // console.log('name: ', name)
-        // socket.data.username = name;
-        // io.to(room).broadcast.emit('new-user', socket.data.username);
-        //get 
-        // users[socket.id]=name;
-        // io.emit('user-list', Object.values(users))
     });
     socket.on('disconnect', async ()=>{
         const rr= socket.data.prevroom; //the rooms where it was connected
