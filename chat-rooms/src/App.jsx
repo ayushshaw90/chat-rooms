@@ -11,21 +11,9 @@ const URL = "http://localhost:8000"
 
 function App() {
   const [socket, setsocket] = useState(null);
-
+  const [activate,setactivate] = useState(false);
   const [chats, setchats] = useState([])
   const [memberlist, setmemberlist] = useState([
-    {
-      name: "Mike",
-      id: 0
-    },
-    {
-      name: "Jon",
-      id: 1
-    },
-    {
-      name: "Raju",
-      id: 2
-    }
   ])
   const [Room, setRoom] = useState("");
   useEffect(() => {
@@ -43,11 +31,12 @@ function App() {
       mem.push({ name: user, id: i })
       setmemberlist(mem)
     })
-
+    setactivate(!activate);
     return () => {
       console.log("closing")
       newsocket.close();
     }
+    
   }, [])
   useEffect(() => {
     if (socket) {
@@ -55,18 +44,19 @@ function App() {
         let cc = [...chats, { by: obj.by, msg: obj.message }]
         setchats(cc);
       })
-
-    }
-  }, [chats])
-  useEffect(() => {
-    if (socket) {
       socket.on('new-user', (name) => {
         console.log("new user", name)
+        setchats([...chats, {"name": name, "room": Room, "joined": true}])
         console.log(memberlist)
       })
       socket.on('left', (name) => {
         console.log("left", name)
+        setchats([...chats, {"name": name, "room": Room, "joined": false}])
       })
+    }
+  }, [chats,activate])
+  useEffect(() => {
+    if (socket) {
       socket.on('user-list', (list)=>{
         console.log('list received', list);
         let i=0;
@@ -77,23 +67,20 @@ function App() {
   const joinfunc = (text) => {
     if (socket) {
       socket.emit('join-room', text);
+      
+      setchats([{"name": user, "room": text, "joined": true}])
       setRoom(text);
     }
   }
   const newmsg = (msg) => {
     if (socket) {
       socket.emit('chat-message', msg, Room)
-      let cc1 = [];
-      for (let i = 0; i < chats.length; i++) {
-        cc1.push({ "by": chats[i]["by"], "msg": chats[i]["msg"] });
-      }
-      cc1.push({ "by": user, "msg": msg });
-      setchats(cc1)
+      setchats([...chats, {"by": user, "msg": msg}])
     }
   }
 
 
-  const [user, setuser] = useState("Mike")
+  const [user, setuser] = useState("")
   const [userset, setuserset] = useState(false);
   const joinref = useRef(null);
   const [height, setheight] = useState(1000);
