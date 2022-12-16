@@ -5,13 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && mv dist ../chat-backend/frontend",
     "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "socket.io": "^4.5.4",
     "socket.io-client": "^4.5.4"
   },
   "devDependencies": {

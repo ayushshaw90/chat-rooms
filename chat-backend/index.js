@@ -1,10 +1,13 @@
-const http = require('http').createServer();
-
+const express= require('express');
+const path=require('path')
+const app= express()
+const http = require('http').createServer(app);
 const io = require("socket.io")(http, {
     cors: {
-        origin: ["http://localhost:5173"]
+        origin: ["http://localhost:5173", "http://127.0.0.1"]
     }
 })
+app.use(express.static(path.join(__dirname, 'frontend')))
 io.on('connection', (socket) => {
     console.log("new connection")
     socket.on('set-name', (name) => {
