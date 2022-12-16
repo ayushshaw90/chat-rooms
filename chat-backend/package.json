@@ -7,8 +7,12 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository":{
+    "type": "git",
+    "url": "git+https://github.com/ayushshaw90/chat-rooms.git"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Ayush Shaw",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
