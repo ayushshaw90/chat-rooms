@@ -4,14 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@socket.io/admin-ui": "^0.5.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "path": "^0.12.7",
@@ -19,5 +18,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
