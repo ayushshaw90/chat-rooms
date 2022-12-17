@@ -107,7 +107,7 @@ function App() {
         <JoinRoom joinroom={joinfunc} room={Room} user={user}></JoinRoom>
         <button
          onClick={()=>setshow(!show)}
-         className='right-0 z-50 absolute px-4 py-2 bg-cyan-500 hover:bg-cyan-600 active:drop-shadow-md duration-200 ease-in-out m-2 text-white  drop-shadow-md rounded-full md:hidden'
+         className='right-0 z-40 absolute px-4 py-2 bg-cyan-500 hover:bg-cyan-600 active:drop-shadow-md duration-200 ease-in-out m-2 text-white  drop-shadow-md rounded-full md:hidden'
          >{show?"Hide":"Show"}</button>
       </div>
       <div className='md:flex'>
