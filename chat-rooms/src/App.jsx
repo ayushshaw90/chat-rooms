@@ -85,10 +85,13 @@ function App() {
   const joinref = useRef(null);
   const [height, setheight] = useState(1000);
   const [joinheight, setjoinheight] = useState(0);
+  const [show, setshow] = useState(true);
   useEffect(() => {
     setheight(window.innerHeight)
     window.addEventListener('resize', () => {
       setheight(window.innerHeight)
+      setjoinheight(joinref.current.clientHeight)
+      setshow(true)
     })
   }, [])
   useEffect(() => {
@@ -96,12 +99,16 @@ function App() {
     joinref.current.addEventListener('resize', () => { console.log("Hello") })
   }, [])
   return (
-    <div className="App h-screen w-full">
-      <div ref={joinref}>
+    <div className="App h-screen w-full" >
+      <div ref={joinref} >
         <JoinRoom joinroom={joinfunc} room={Room} user={user}></JoinRoom>
+        <button
+         onClick={()=>setshow(!show)}
+         className='right-0 z-50 absolute px-4 py-2 bg-cyan-500 hover:bg-cyan-600 active:drop-shadow-md duration-200 ease-in-out m-2 text-white  drop-shadow-md rounded-full md:hidden'
+         >{show?"Hide":"Show"}</button>
       </div>
-      <div className='flex'>
-        <Members memberlist={memberlist} height={height - joinheight} you={user}></Members>
+      <div className='md:flex'>
+        <Members memberlist={memberlist} height={height - joinheight} you={user} show={show}></Members>
         <div className='w-full'>
           <Chat chats={chats} user={user} height={height - joinheight - 60} />
           <NewMsg newmsg={newmsg}></NewMsg>
