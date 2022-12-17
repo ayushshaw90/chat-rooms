@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "emoji-picker-react": "^4.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "socket.io-client": "^4.5.4"

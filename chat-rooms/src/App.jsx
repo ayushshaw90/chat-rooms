@@ -11,7 +11,7 @@ const URL = "http://localhost:8000"
 
 function App() {
   const [socket, setsocket] = useState(null);
-  const [activate,setactivate] = useState(false);
+  const [activate,setactivate] = useState(true);
   const [chats, setchats] = useState([])
   const [memberlist, setmemberlist] = useState([
   ])
@@ -102,7 +102,7 @@ function App() {
       </div>
       <div className='flex'>
         <Members memberlist={memberlist} height={height - joinheight} you={user}></Members>
-        <div className='w-full bg-red-500'>
+        <div className='w-full'>
           <Chat chats={chats} user={user} height={height - joinheight - 60} />
           <NewMsg newmsg={newmsg}></NewMsg>
         </div>
