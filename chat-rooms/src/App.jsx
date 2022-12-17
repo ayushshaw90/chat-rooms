@@ -94,6 +94,9 @@ function App() {
       setshow(true)
     })
   }, [])
+  useEffect(()=>{
+    setjoinheight(joinref.current.clientHeight)
+  },[user,userset])
   useEffect(() => {
     setjoinheight(joinref.current.clientHeight)
     joinref.current.addEventListener('resize', () => { console.log("Hello") })

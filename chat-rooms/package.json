@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && mv dist ../chat-backend/frontend",
+    "build": "vite build && rm -r ../chat-backend/frontend && mv dist ../chat-backend/frontend",
     "preview": "vite preview"
   },
   "dependencies": {
