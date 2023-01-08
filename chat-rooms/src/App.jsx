@@ -91,7 +91,7 @@ function App() {
     window.addEventListener('resize', () => {
       setheight(window.innerHeight)
       setjoinheight(joinref.current.clientHeight)
-      setshow(true)
+      // setshow(true)
     })
   }, [])
   useEffect(()=>{

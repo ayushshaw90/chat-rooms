@@ -3,8 +3,8 @@ import React from 'react'
 export default function Members({ memberlist, height, you, show}) {
   return (
     <>
-    {show &&
-    <div className='z-30 absolute md:static md:block bg-gray-200 w-80 pt-1' style={{ height: `${height}px` }}>
+    
+    <div className={`z-30 absolute md:static md:block bg-gray-200 w-80 pt-1 ${show?"hidden":""}`} style={{ height: `${height}px` }}>
       {memberlist.map((e) => {
         return (
           <div key={e.id} className='py-1 px-2 text-lg '>
@@ -18,7 +18,7 @@ export default function Members({ memberlist, height, you, show}) {
         )
       })}
     </div>
-    }
+    
     </>
   )
 }
