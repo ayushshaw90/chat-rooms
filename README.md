@@ -15,7 +15,7 @@ It is made with Socket.io and ReactJS.
 ## 🚀 Live Demo
 ![Website](https://img.shields.io/badge/website-up-greene)
 
-https://chat-room-backend-production.up.railway.app/
+https://chat-room-a9sy.onrender.com
 
 ## 🔧 Setting up the project locally
 
